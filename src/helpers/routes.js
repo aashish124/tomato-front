@@ -24,6 +24,14 @@ const publicRoutes = [
       view: lazy(() => import("../components/Cart/Cart")),
     },
     {
+      pageLink: "/login",
+      view: lazy(() => import("../components/Login/Login")),
+    },
+    {
+      pageLink: "/register",
+      view: lazy(() => import("../components/Login/Register")),
+    },
+    {
       pageLink: "/notfound",
       view: lazy(() => import("./NotFound")),
     },
