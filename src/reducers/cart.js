@@ -52,18 +52,44 @@ const cart = (state = initialState, action) => {
                 numberCart:state.numberCart+1
             }
         case types.INCREASE_QUANTITY:
+
             state.numberCart++
-            state.Carts[action.payload].quantity++;
+            let check1 = false;
+            state.Carts.map((item,key)=>{
+                if(item.itemId == action.payload.itemId){
+                    state.Carts[key].quantity++;
+                    check1=true;
+                }
+            });
+            if(!check1){
+                let _cart = {
+                    itemId:action.payload.itemId,
+                    quantity:1,
+                    name:action.payload.name,
+                    image_url:action.payload.image_url,
+                    price:action.payload.price
+                }
+                state.Carts.push(_cart);
+            }
           
            return{
                ...state
            }
         case types.DECREASE_QUANTITY:
-            let quantity = state.Carts[action.payload].quantity;
-            if(quantity>1){
-                state.numberCart--;
-                state.Carts[action.payload].quantity--;
-            }
+
+            state.Carts.map((item,key)=>{
+                if(item.itemId == action.payload.itemId){
+                    state.numberCart--;
+                    state.Carts[key].quantity--;
+                    if(state.Carts[key].quantity == 0){
+                        var temp = state.Carts.filter(i=>{
+                            return i.itemId!=action.payload.itemId
+                        })
+                        console.log(temp);
+                        state.Carts = temp;
+                    }
+                }
+            });
           
             return{
                 ...state
@@ -74,7 +100,7 @@ const cart = (state = initialState, action) => {
                 ...state,
                 numberCart:state.numberCart - quantity_,
                 Carts:state.Carts.filter(item=>{
-                    return item.id!=state.Carts[action.payload].id
+                    return item.itemId!=state.Carts[action.payload].id
                 })
                
             }

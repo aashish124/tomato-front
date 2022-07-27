@@ -12,7 +12,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles , withStyles } from "@material-ui/core/styles";
-import { AddCart } from "../../actions/cart";
+import { AddCart , IncreaseQuantity , DecreaseQuantity} from "../../actions/cart";
 import Button from "@material-ui/core/Button";
 
 import Table from '@material-ui/core/Table';
@@ -22,6 +22,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { getISODay } from "date-fns";
 
 const LINES_TO_SHOW = 1;
 
@@ -113,6 +114,16 @@ const Restaurant = (props) => {
         history.goBack();
     };
 
+    const getCartItemQuantity = (item) => {
+        // console.log(props.cart.Carts)
+        const q = props.cart.Carts.filter(c => c.itemId === item.itemId);
+        if(q.length > 0){
+            return q[0].quantity;
+        }
+        return 0;
+    }
+
+
 
     return (
         <div>
@@ -143,76 +154,24 @@ const Restaurant = (props) => {
                                         <StyledTableCell component="th" scope="row">
                                             {item.name}
                                         </StyledTableCell>
-                                        <StyledTableCell align="right">{item.price}</StyledTableCell>
-                                        <StyledTableCell align="right">
-                                            <Button
-                                                    type="button"
-                                                    color="primary"
-                                                    onClick={() => props.dispatch(AddCart(item))}
-                                                    >
-                                                    Add Item
-                                                </Button>
-                                        </StyledTableCell>
+                                        <StyledTableCell align="right">Rs. {item.price}</StyledTableCell>
+                                        {getCartItemQuantity(item) > 0 ? 
+                                        <StyledTableCell>
+                                                <span className="btn btn-primary" style={{margin:'2px'}} onClick={()=>props.dispatch(DecreaseQuantity(item))}>-</span>
+                                                <span className="btn btn-info">{getCartItemQuantity(item)}</span>
+                                                <span className="btn btn-primary" style={{margin:'2px'}} onClick={()=>props.dispatch(IncreaseQuantity(item))}>+</span>
+                                                
+                                        </StyledTableCell> : 
+                                        <StyledTableCell>
+                                                <span className="btn btn-primary" style={{margin:'2px'}} onClick={()=>props.dispatch(IncreaseQuantity(item))}>Add Item</span>
+                                                
+                                        </StyledTableCell>}
+                                        
                                     </StyledTableRow>
                                 ))}
                             </TableBody>
                         </Table>
                     </TableContainer>
-
-
-                    {/* <Grid container spacing={3} alignItems="stretch">
-                        {props.restaurant.Items.map((item, index) => {
-                            return (
-                                <Grid item lg={4} md={6} sm={6} xs={12} key={index}>
-                                    
-                                        <Card
-                                            // onClick={() => handleEvent(event)}
-                                            className={classes.fullHeightCard}
-                                        >
-                                            <CardActionArea>
-                                                <CardMedia
-                                                    component="img"
-                                                    alt="Event Cover Image"
-                                                    height="200"
-                                                    image={item.image_url}
-                                                    title="Click to view full event"
-                                                />
-                                                <CardContent>
-                                                    <Typography
-                                                        variant="h6"
-                                                        component="h2"
-                                                    >
-                                                        {item.name}
-                                                    </Typography>
-                                                    <Typography
-                                                        variant="h6"
-                                                        component="h2"
-                                                    >
-                                                        Rs. {item.price}
-                                                    </Typography>
-                                                    <Typography
-                                                        variant="body2"
-                                                        color="textSecondary"
-                                                        component="p"
-                                                    >
-                                                        {item.description}
-                                                        
-                                                    </Typography>
-                                                    <Button
-                                                        type="button"
-                                                        color="primary"
-                                                        onClick={() => props.dispatch(AddCart(item))}
-                                                        >
-                                                        Add Item
-                                                    </Button>
-                                                    
-                                                </CardContent>
-                                            </CardActionArea>
-                                        </Card>
-                                </Grid>
-                            );
-                        })}
-                    </Grid> */}
 
                 </div>
             }

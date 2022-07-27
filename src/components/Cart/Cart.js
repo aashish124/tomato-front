@@ -5,21 +5,13 @@ import LoaderFullPage from "../../helpers/LoaderFullPage";
 
 import { useHistory , Link } from "react-router-dom";
 import { getSingleRestaurant } from "../../actions/restaurants";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import { AddCart } from "../../actions/cart";
-import Button from "@material-ui/core/Button";
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import {IncreaseQuantity , DecreaseQuantity , DeleteCart } from "../../actions/cart"
@@ -124,15 +116,15 @@ const Cart = (props) => {
                                             <StyledTableCell component="th" scope="row">
                                                 {item.name}
                                             </StyledTableCell>
-                                            <StyledTableCell align="right">{item.price}</StyledTableCell>
+                                            <StyledTableCell align="right">Rs. {item.price}</StyledTableCell>
                                             
                                             <StyledTableCell>
-                                                <span className="btn btn-primary" style={{margin:'2px'}} onClick={()=>props.dispatch(DecreaseQuantity(index))}>-</span>
+                                                <span className="btn btn-primary" style={{margin:'2px'}} onClick={()=>props.dispatch(DecreaseQuantity(item))}>-</span>
                                                 <span className="btn btn-info">{item.quantity}</span>
-                                                <span className="btn btn-primary" style={{margin:'2px'}} onClick={()=>props.dispatch(IncreaseQuantity(index))}>+</span>
+                                                <span className="btn btn-primary" style={{margin:'2px'}} onClick={()=>props.dispatch(IncreaseQuantity(item))}>+</span>
                                                 
                                             </StyledTableCell>
-                                            <StyledTableCell><span> {item.quantity * item.price}</span></StyledTableCell>
+                                            <StyledTableCell><span>Rs. {item.quantity * item.price}</span></StyledTableCell>
                                         </StyledTableRow>
                                     ))}
                                 </TableBody>
@@ -141,9 +133,9 @@ const Cart = (props) => {
 
                         <div className="d-flex justify-content-between container my-5">
                             <div className="d-flex flex-column">
-                                <span>Net Price: {totalPrice}</span>
-                                <span>Taxes: {(totalPrice*0.132).toFixed(2)}</span>
-                                <span>Total Price: {(totalPrice*1.132).toFixed(2)}</span>
+                                <span>Net Price: Rs. {totalPrice}</span>
+                                <span>Taxes: Rs. {(totalPrice*0.132).toFixed(2)}</span>
+                                <span>Total Price: Rs. {(totalPrice*1.132).toFixed(2)}</span>
                             </div>
                             <div>
                                 <Link to={`/`}>
