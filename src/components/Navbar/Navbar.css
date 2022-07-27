@@ -1,0 +1,32 @@
+.custom-nav-active{
+    border-bottom: 2px solid black;
+    font-size: 1.2rem;
+}
+
+.logo-image{
+    width: 100px;
+}
+
+li {
+    transition: 0.3s;
+}
+
+li:hover {
+    transform: scale(1.05);
+}
+/* .navbar-nav li:after {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 2px;
+    width: 0px;
+    background: transparent;
+    border-bottom: 2px solid #000;
+
+    transition: width .5s ease, background-color .5s ease;
+} */
+
+/* .navbar-nav li:hover:after, .navbar-nav li:active:after {
+    width: 100%;
+    background: #000;
+} */

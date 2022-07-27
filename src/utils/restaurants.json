@@ -1,0 +1,65 @@
+{
+    "status": true,
+    "data": [
+        {
+            "restaurantId": "432132",
+            "name": "punjabi dhaba",
+            "offer": 20,
+            "description": "hygeinic veg menu only ",
+            "address": "madiwala,bangalore,karnataka,india",
+            "image_url": "https://media-cdn.tripadvisor.com/media/photo-i/0d/6c/4f/b8/photo1jpg.jpg",
+            "Items": [
+                {
+                    "itemId": "10001",
+                    "name": "paneer tikka",
+                    "description": "this dish is made with Indian spice and paneer ",
+                    "offer": 20,
+                    "restaurantId": "432132",
+                    "image_url": "https://media-cdn.tripadvisor.com/media/photo-i/0d/6c/4f/b8/photo1jpg.jpg",
+                    "price": "200",
+                    "rating": 4.3
+                },
+                {
+                    "itemId": "10032",
+                    "name": "gobi paratha",
+                    "description": "this dish is made with wheet and cabbage and contains a lot of oil",
+                    "offer": 10,
+                    "restaurantId": "432132",
+                    "image_url": "https://media-cdn.tripadvisor.com/media/photo-i/0d/6c/4f/b8/photo1jpg.jpg",
+                    "price": "50",
+                    "rating": 4.1
+                }
+            ]
+        },
+        {
+            "restaurantId": "432132",
+            "name": "punjabi dhaba",
+            "offer": 20,
+            "description": "hygeinic veg menu only ",
+            "address": "madiwala,bangalore,karnataka,india",
+            "image_url": "https://media-cdn.tripadvisor.com/media/photo-i/0d/6c/4f/b8/photo1jpg.jpg",
+            "Items": [
+                {
+                    "itemId": "10001",
+                    "name": "paneer tikka",
+                    "description": "this dish is made with Indian spice and paneer ",
+                    "offer": 20,
+                    "restaurantId": "432132",
+                    "image_url": "https://media-cdn.tripadvisor.com/media/photo-i/0d/6c/4f/b8/photo1jpg.jpg",
+                    "price": "200",
+                    "rating": 4.3
+                },
+                {
+                    "itemId": "10032",
+                    "name": "gobi paratha",
+                    "description": "this dish is made with wheet and cabbage and contains a lot of oil",
+                    "offer": 10,
+                    "restaurantId": "432132",
+                    "image_url": "https://media-cdn.tripadvisor.com/media/photo-i/0d/6c/4f/b8/photo1jpg.jpg",
+                    "price": "50",
+                    "rating": 4.1
+                }
+            ]
+        }
+    ]
+}
