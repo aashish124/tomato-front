@@ -2,7 +2,6 @@ import React, { Suspense, useEffect } from "react";
 import { Redirect, Switch, useLocation } from "react-router-dom";
 import { connect } from "react-redux";
 import Navbar from "./components/Navbar/Navbar";
-
 import "./App.css";
 import { publicPages } from "./helpers/routes";
 import "lightgallery.js/dist/css/lightgallery.css";
