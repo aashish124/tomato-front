@@ -28,23 +28,7 @@ const App = (props) => {
               {props.auth.isLoggedIn ? privatePages : <ForceLogin from={location}/>}
               {/* {!props.auth.isLoggedIn ? <ForceLogin from={location} /> : null} */}
             </div>
-          {/* {publicPages}
-          {!props.auth.isLoggedIn ? <Redirect
-                    to={{
-                        pathname: "/login",
-                    }}
-                /> : null} */}
-          {/* {props.isLoading ? (
-            <div>
-              {" "}
-              <LoaderFullPage />{" "}
-            </div>
-          ) : (
-            <div>
-              {props.isLoggedIn ? privatePages : null}
-              {!props.isLoggedIn ? <ForceLogin from={location} /> : null}
-            </div>
-          )} */}
+          
           <Redirect to="/notfound" />
         </Switch> 
         <SnackbarComponent 

@@ -5,7 +5,7 @@ const initialState = {
     name: "",
     userId: null,
     isLoading: true,
-
+    
 };
 
 const auth = (state = initialState, action) => {
