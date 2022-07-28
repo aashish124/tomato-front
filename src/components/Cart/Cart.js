@@ -81,8 +81,12 @@ const Cart = (props) => {
     };
 
     const handleSubmit = () => {
-        props.dispatch(openSnackbar("Order Placed Successfully!" , "success"));
-        props.dispatch(DeleteCart())
+        if(window.confirm("Are you sure you want to checkout")){
+            props.dispatch(openSnackbar("Order Placed Successfully!" , "success"));
+            props.dispatch(DeleteCart())
+        }
+        // props.dispatch(openSnackbar("Order Placed Successfully!" , "success"));
+        // props.dispatch(DeleteCart())
 
     }
 
@@ -101,7 +105,7 @@ const Cart = (props) => {
             {props.restaurantLoading ?
                 <div> <LoaderFullPage /> </div> :
                 <div className="container my-5">
-                    <Typography gutterBottom variant="h4" component="h2" align="center">
+                    <Typography gutterBottom variant="h4" component="h2" align="center" style={{paddingTop: "20px"}}>
                         Your Cart
                     </Typography>
 
@@ -112,8 +116,8 @@ const Cart = (props) => {
                                 <TableBody>
                                     {props.cart.Carts.map((item, index) => (
                                         <StyledTableRow key={index}>
-                                            <StyledTableCell align="left"> {<img src={item.image_url} />} </StyledTableCell>
-                                            <StyledTableCell component="th" scope="row">
+                                            <StyledTableCell align="left"> {<img src={item.imageUrl} style={{height: "60px"}} />} </StyledTableCell>
+                                            <StyledTableCell component="th" scope="row" align="left" style={{fontSize: "20px"}}>
                                                 {item.name}
                                             </StyledTableCell>
                                             <StyledTableCell align="right">Rs. {item.price}</StyledTableCell>

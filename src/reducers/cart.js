@@ -23,7 +23,7 @@ const cart = (state = initialState, action) => {
                     itemId:action.payload.itemId,
                     quantity:1,
                     name:action.payload.name,
-                    image_url:action.payload.image_url,
+                    imageUrl:action.payload.imageUrl,
                     price:action.payload.price
                 } 
                 state.Carts.push(cart); 
@@ -41,7 +41,7 @@ const cart = (state = initialState, action) => {
                         itemId:action.payload.itemId,
                         quantity:1,
                         name:action.payload.name,
-                        image_url:action.payload.image_url,
+                        imageUrl:action.payload.imageUrl,
                         price:action.payload.price
                     }
                     state.Carts.push(_cart);
@@ -66,7 +66,7 @@ const cart = (state = initialState, action) => {
                     itemId:action.payload.itemId,
                     quantity:1,
                     name:action.payload.name,
-                    image_url:action.payload.image_url,
+                    imageUrl:action.payload.imageUrl,
                     price:action.payload.price
                 }
                 state.Carts.push(_cart);

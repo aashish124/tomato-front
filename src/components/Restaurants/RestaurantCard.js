@@ -45,16 +45,16 @@ const RestaurantCard = (props) => {
                 <CardMedia
                 component="img"
                 alt="Event Cover Image"
-                height="200"
-                image={props.restaurant.image_url}
-                title="Click to view full event"
+                height="150"
+                image={props.restaurant.imageUrl}
+                title="Click to open restaurant"
                 />
-                <CardContent>
+                <CardContent style={{background: "linear-gradient(#ffffff, #9198e5)"}}>
                     <Typography variant="h6" component="h2" className={classes.multiLineEllipsis}>
-                        {props.restaurant.r_name}
+                        {props.restaurant.name}
                     </Typography>
                     <Typography component="h4" className={classes.multiLineEllipsis}>
-                        {props.restaurant.r_description}
+                        {props.restaurant.address}
                     </Typography>
                 </CardContent>
             </CardActionArea>

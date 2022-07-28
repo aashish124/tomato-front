@@ -7,15 +7,18 @@ export const Apiurls = {
 
 
   // Auth
-  createUser: () => `${API_ROOT}/auth/signup`,
+  createUser: () => `${API_ROOT}/signup`,
   login: () => `${API_ROOT}/login`,
   verifyUser: () => `${API_ROOT}/auth/verify-user`,
 
+
+  //Orders
+  getAllOrders: () => `${API_ROOT}/orders`,
 
   // Home
   getHomeDetails: () => `${API_ROOT}/home`,
 
   // Restaurants
   getAllRestaurants: () => `${API_ROOT}/restaurants`,
-  getSingleRestaurant: (id) => `${API_ROOT}/restaurant/${id}`,
+  getSingleRestaurant: (id) => `${API_ROOT}/browseRestaurant`,
 };

@@ -24,6 +24,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { getISODay } from "date-fns";
 
+import Rating from '@mui/material/Rating';
+
 const LINES_TO_SHOW = 1;
 
 const StyledTableCell = withStyles((theme) => ({
@@ -67,34 +69,45 @@ const useStyles = makeStyles({
       },
 });
 
-const data = {
+const data1 = {
 
     "restaurantId": "432132",
     "name": "Punjabi Dhaba",
     "offer": 20,
-    "description": "hygeinic veg menu only ",
+    "description": "Hygeinic Veg Menu Only ",
     "address": "madiwala,bangalore,karnataka,india",
-    "image_url": "https://media-cdn.tripadvisor.com/media/photo-i/0d/6c/4f/b8/photo1jpg.jpg",
-    "Items": [{
-        "itemId": "10001",
-        "name": "paneer tikka",
-        "description": "this dish is made with Indian spice and paneer ",
-        "offer": 20,
-        "restaurantId": "432132",
-        "image_url": "https://media-cdn.tripadvisor.com/media/photo-i/0d/6c/4f/b8/photo1jpg.jpg",
-        "price": "200",
-        "rating": 4.3
-    }, {
-        "itemId": "10032",
-        "name": "gobi paratha",
-        "description": "this dish is made with wheet and cabbage and contains a lot of oil",
-        "offer": 10,
-        "restaurantId": "432132",
-        "image_url": "https://media-cdn.tripadvisor.com/media/photo-i/0d/6c/4f/b8/photo1jpg.jpg",
-        "price": "50",
-        "rating": 4.1
-    }]
+    "imageUrl": "https://media-cdn.tripadvisor.com/media/photo-i/0d/6c/4f/b8/photo1jpg.jpg",
+
 }
+
+const data2 = [{
+    "itemId": "10001",
+    "name": "Paneer Tikka",
+    "description": "this dish is made with Indian spice and paneer ",
+    "offer": 20,
+    "restaurantId": "432132",
+    "imageUrl": "https://media-cdn.tripadvisor.com/media/photo-i/0d/6c/4f/b8/photo1jpg.jpg",
+    "price": "200",
+    "rating": 4.5
+}, {
+    "itemId": "10032",
+    "name": "Gobi Paratha",
+    "description": "this dish is made with wheet and cabbage and contains a lot of oil",
+    "offer": 10,
+    "restaurantId": "432132",
+    "imageUrl": "https://media-cdn.tripadvisor.com/media/photo-i/0d/6c/4f/b8/photo1jpg.jpg",
+    "price": "50",
+    "rating": 4.7
+}, {
+    "itemId": "10035",
+    "name": "Gobi Paratha",
+    "description": "this dish is made with wheet and cabbage and contains a lot of oil",
+    "offer": 10,
+    "restaurantId": "432132",
+    "imageUrl": "https://media-cdn.tripadvisor.com/media/photo-i/0d/6c/4f/b8/photo1jpg.jpg",
+    "price": "50",
+    "rating": 4.7
+}]
 
 const Restaurant = (props) => {
 
@@ -103,7 +116,7 @@ const Restaurant = (props) => {
     const history = useHistory();
 
       useEffect(() => {
-        props.dispatch(getSingleRestaurant(props.match.params.restaurant_id));
+        props.dispatch(getSingleRestaurant(props.match.params.restaurant_name));
       }, []);
 
     // props = {
@@ -130,31 +143,34 @@ const Restaurant = (props) => {
             {props.restaurantLoading ?
                 <div> <LoaderFullPage /> </div> :
                 <div className="container my-5">
-                    <Typography gutterBottom variant="h4" component="h2" align="center">
-                        {props.restaurant.name}
-                    </Typography>
 
-                    <div className="d-flex justify-content-center">
-                        <img src={props.restaurant.image_url} className="single-event-image" />
-                    </div>
-                    
+                    <div className="d-flex flex-row justify-content-around" style={{marginBottom: "20px" , marginTop: "40px", background: "linear-gradient(#ffffff, #9198e5)"}}>
 
+                        <div className="d-flex flex-column justify-content-center align-items-center" >
+                            <Typography gutterBottom variant="h4" component="h2" align="center">
+                                {props.restaurant.name}
+                            </Typography>
+                            <div className="d-flex justify-content-between">
+                                <span style={{fontSize: "16px"}}>{props.restaurant.description}</span>
+                            </div>
+                        </div>
 
-
-                    <div className="d-flex justify-content-between">
-                        <pre>{props.restaurant.description}</pre>
+                        <div className="d-flex justify-content-center">
+                            <img src={props.restaurant.imageUrl} className="single-event-image" />
+                        </div>
                     </div>
 
                     <TableContainer component={Paper}>
                         <Table className={classes.table} aria-label="notice table">
                             <TableBody>
-                                {props.restaurant.Items.map((item, index) => (
+                                {props.restaurantItems.map((item, index) => (
                                     <StyledTableRow  key={index}>
-                                        <StyledTableCell align="left"> {<img src={item.image_url} />} </StyledTableCell>
-                                        <StyledTableCell component="th" scope="row">
-                                            {item.name}
+                                        <StyledTableCell align="left"> {<img src={item.imageUrl} style={{height: "60px" , marginRight: "5px" , verticalAlign: "center"}} />}<Rating name="read-only" value={item.rating} precision={0.1} readOnly /> </StyledTableCell>
+                                        <StyledTableCell component="th" scope="row" style={{width: "50%"}}>
+                                            <span style={{fontSize: "20px"}}>{item.name}</span><br/>
+                                            <span>{item.description}</span>
                                         </StyledTableCell>
-                                        <StyledTableCell align="right">Rs. {item.price}</StyledTableCell>
+                                        <StyledTableCell align="left">Rs. {item.price}</StyledTableCell>
                                         {getCartItemQuantity(item) > 0 ? 
                                         <StyledTableCell>
                                                 <span className="btn btn-primary" style={{margin:'2px'}} onClick={()=>props.dispatch(DecreaseQuantity(item))}>-</span>
@@ -180,7 +196,10 @@ const Restaurant = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        restaurant: data,
+        restaurant: data1,
+        restaurantItems: data2,
+        // restaurant: state.restaurant.singleRestaurant,
+        // restaurantItems: state.restaurant.singleRestaurantItems,
         cart: state.cart,
         restaurantLoading: state.restaurants.restaurantLoading,
         ...ownProps,

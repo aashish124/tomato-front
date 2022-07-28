@@ -33,12 +33,16 @@ const privateRoutes = [
     view: lazy(() => import("../components/Home/Home")),
   },
   {
-    pageLink: "/restaurant/:restaurant_id",
+    pageLink: "/restaurant/:restaurant_name",
     view: lazy(() => import("../components/Restaurants/SingleRestaurant")),
   },
   {
     pageLink: "/cart",
     view: lazy(() => import("../components/Cart/Cart")),
+  },
+  {
+    pageLink: "/orders",
+    view: lazy(() => import("../components/Order/Orders")),
   },
 ]
 

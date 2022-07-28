@@ -44,11 +44,11 @@ export const getAllRestaurantsList = () => (dispatch) => {
 };
 
 
-export const getSingleRestaurant = (id) => (dispatch) => {
-    const url = Apiurls.getSingleRestaurant(id);
-    dispatch(setIsLoading(true));
+export const getSingleRestaurant = (name) => (dispatch) => {
+    const url = Apiurls.getSingleRestaurant();
+    // dispatch(setIsLoading(true));
     axios
-      .get(url, tokenConfig())
+      .get(url, { params: { name: name } }, tokenConfig())
       .then((res) => {
       //console.log(res.data);
         dispatch({

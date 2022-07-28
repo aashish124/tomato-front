@@ -14,11 +14,11 @@ const AllRestaurants = (props) => {
         <div className="container">
           {props.restaurantList.length> 0 ? (
             <div>
-                  RESTAURANTS LISTS
-                  <Grid container spacing={3} alignItems="stretch">
+                  <div className="d-flex justify-content-center" style={{fontSize: "30px" , marginBottom: "20px" , marginTop: "20px", paddingTop: "20px"}}>RESTAURANTS LIST</div>
+                  <Grid container spacing={2} alignItems="stretch">
                     {props.restaurantList.map((restaurant , index) =>{
                         return <Grid item lg={4} md={6} sm={6} xs={12} key={index}>
-                                <Link to={`/restaurant/${restaurant.r_id}`}>
+                                <Link to={`/restaurant/${restaurant.name}`}>
                                     <RestaurantCard restaurant={restaurant} key={index} />
                                 </Link>
                             </Grid>;
