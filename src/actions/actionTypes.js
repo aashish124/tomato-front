@@ -30,3 +30,7 @@ export const SET_IS_LOADING = "SET_IS_LOADING"
 
 
 
+// Home
+export const GET_HOME_DETAILS = "GET_HOME_DETAILS";
+
+

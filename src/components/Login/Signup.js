@@ -3,13 +3,38 @@ import { connect } from "react-redux";
 import { signup } from "../../actions/auth";
 import { Redirect , Link } from "react-router-dom";
 import "./Login.css";
+import Switch from '@mui/material/Switch';
 
 const Signup = (props) => {
     const [form, setForm] = useState({
         email: "",
         password: "",
         name:"",
+        userType: 0,
+        phoneNumber: null,
     });
+
+    const [checked, setChecked] = React.useState(false);
+
+    const handleChangeSwitch = (event) => {
+
+        // console.log(event.target.checked)
+        let tempValue = 0;
+        if(event.target.checked == true) {
+            tempValue = 1;
+        }
+
+        setChecked(event.target.checked);
+
+        setForm((prevState) => {
+            return {
+                ...prevState,
+                userType: tempValue,
+            };
+        });
+        // console.log(tempValue)
+        // console.log(form)
+    };
 
 
     const handleChange = (e) => {
@@ -25,6 +50,7 @@ const Signup = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        // console.log(form)
         props.dispatch(signup(form));
     };
 
@@ -66,6 +92,19 @@ const Signup = (props) => {
                                 value={form.password}
                                 onChange={handleChange}
                             />
+                            <input
+                                className="fadeIn third"
+                                type="text"
+                                placeholder="Phone Number"
+                                name="phoneNumber"
+                                value={form.phoneNumber}
+                                onChange={handleChange}
+                            />
+                            <div className="fadeIn third">Sign up as Manager <Switch
+                                checked={checked}
+                                onChange={handleChangeSwitch}
+                                inputProps={{ 'aria-label': 'controlled' }}
+                            /></div>
                             <input
                                 type="submit"
                                 className="fadeIn fourth"

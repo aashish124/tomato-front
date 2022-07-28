@@ -12,6 +12,9 @@ export const Apiurls = {
   verifyUser: () => `${API_ROOT}/auth/verify-user`,
 
 
+  // Home
+  getHomeDetails: () => `${API_ROOT}/home`,
+
   // Restaurants
   getAllRestaurants: () => `${API_ROOT}/restaurants`,
   getSingleRestaurant: (id) => `${API_ROOT}/restaurant/${id}`,

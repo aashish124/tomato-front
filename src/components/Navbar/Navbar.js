@@ -30,7 +30,7 @@ const Navbar = (props) => {
                             className={`nav-item mx-4`}
                             name='home'
                             >
-                                <NavLink exact activeClassName="custom-nav-active" className="nav-link" to="/profile"><i className='fas fa-user-alt'></i></NavLink>
+                                <NavLink exact activeClassName="custom-nav-active" className="nav-link" to="/profile"><i className='fas fa-user-alt'></i>{props.userName}</NavLink>
                         </li>
                         <li 
                             className={`nav-item mx-4`}
@@ -48,6 +48,8 @@ const Navbar = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
     return {
+        userName: state.auth.name,
+        // userName: 'abc',
       totalItems: state.cart.numberCart,
       ...ownProps,
     };

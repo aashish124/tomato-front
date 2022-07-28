@@ -35,11 +35,6 @@ const RestaurantCard = (props) => {
 
   const classes = useStyles();
 
-  
-  const handleEvent = (event)=> {
-
-  }
- 
   return (
     <div>
         <Card

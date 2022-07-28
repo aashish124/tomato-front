@@ -20,7 +20,8 @@ const App = (props) => {
   return (
     <div className="all-content">
       <Suspense fallback={<div />}>
-        <Navbar />
+        {props.auth.isLoggedIn ? <Navbar /> : null}
+        {/* <Navbar /> */}
         <Switch>
             {publicPages}
             <div>
