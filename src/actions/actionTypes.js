@@ -23,4 +23,10 @@ export const DELETE_ITEM = 'DELETE_ITEM';
 export const DELETE_CART = 'DELETE_CART';
 
 
+// Users
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGOUT = "LOGOUT"
+export const SET_IS_LOADING = "SET_IS_LOADING"
+
+
 

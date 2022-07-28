@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { login } from "../../actions/auth";
-import { Redirect , Link} from "react-router-dom";
+import { signup } from "../../actions/auth";
+import { Redirect , Link } from "react-router-dom";
 import "./Login.css";
 
-const Login = (props) => {
+const Signup = (props) => {
     const [form, setForm] = useState({
         email: "",
         password: "",
+        name:"",
     });
-
-    console.log('sdad');
 
 
     const handleChange = (e) => {
@@ -26,7 +25,7 @@ const Login = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.dispatch(login(form));
+        props.dispatch(signup(form));
     };
 
     return (
@@ -46,6 +45,14 @@ const Login = (props) => {
                             <input
                                 className="fadeIn second"
                                 type="text"
+                                placeholder="Name"
+                                name="name"
+                                value={form.name}
+                                onChange={handleChange}
+                            />
+                            <input
+                                className="fadeIn second"
+                                type="text"
                                 placeholder="Email"
                                 name="email"
                                 value={form.email}
@@ -53,7 +60,7 @@ const Login = (props) => {
                             />
                             <input
                                 className="fadeIn third"
-                                type="password"
+                                type="text"
                                 placeholder="Password"
                                 name="password"
                                 value={form.password}
@@ -62,12 +69,11 @@ const Login = (props) => {
                             <input
                                 type="submit"
                                 className="fadeIn fourth"
-                                value="Log In"
+                                value="Sign up"
                             ></input>
-                            
                         </form>
                     </div>
-                        <Link to={`/signup`}>Create a new Account</Link>
+                        <Link to={`/login`}>Already have an account? Login Here</Link>
                 </div>
             )}
         </div>
@@ -81,4 +87,4 @@ const mapStateToProps = (state, ownProps) => {
     };
 };
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(Signup);

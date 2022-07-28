@@ -6,6 +6,11 @@ export const Apiurls = {
   rootUrl: () => `${API_ROOT}`,
 
 
+  // Auth
+  createUser: () => `${API_ROOT}/auth/signup`,
+  login: () => `${API_ROOT}/auth/signin`,
+  verifyUser: () => `${API_ROOT}/auth/verify-user`,
+
 
   // Restaurants
   getAllRestaurants: () => `${API_ROOT}/restaurants`,

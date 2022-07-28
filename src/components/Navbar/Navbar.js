@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { connect } from "react-redux";
+import Searchbar from './Searchbar';
 
 const Navbar = (props) => {
     const pathname = window.location.pathname;
@@ -24,15 +25,7 @@ const Navbar = (props) => {
                         >
                             <NavLink exact activeClassName="custom-nav-active" className="nav-link" to="/">TOMATO</NavLink>
                         </li>
-                        <Form className="d-flex">
-                            <Form.Control
-                                type="search"
-                                placeholder="Search"
-                                className="me-2"
-                                aria-label="Search"
-                            />
-                            <Button variant="outline-success">Search</Button>
-                        </Form>
+                        <Searchbar/>
                         <li 
                             className={`nav-item mx-4`}
                             name='home'

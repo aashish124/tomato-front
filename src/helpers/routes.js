@@ -4,41 +4,48 @@ import { Route } from "react-router-dom";
 import LoaderFullPage from "./LoaderFullPage";
 
 export const loginLoader = (
-    <Route
-      path="*"
-      render={() => <LoaderFullPage message="Loading..." />}
-    />
-  );
+  <Route
+    path="*"
+    render={() => <LoaderFullPage message="Loading..." />}
+  />
+);
 
 const publicRoutes = [
-    {
-      pageLink: "/",
-      view: lazy(() => import("../components/Home/Home")),
-    },
-    {
-      pageLink: "/restaurant/:restaurant_id",
-      view: lazy(() => import("../components/Restaurants/SingleRestaurant")),
-    },
-    {
-      pageLink: "/cart",
-      view: lazy(() => import("../components/Cart/Cart")),
-    },
-    {
-      pageLink: "/login",
-      view: lazy(() => import("../components/Login/Login")),
-    },
-    {
-      pageLink: "/register",
-      view: lazy(() => import("../components/Login/Register")),
-    },
-    {
-      pageLink: "/notfound",
-      view: lazy(() => import("./NotFound")),
-    },
-    
-    
+  {
+    pageLink: "/signup",
+    view: lazy(() => import("../components/Login/Signup")),
+  },
+  {
+    pageLink: "/login",
+    view: lazy(() => import("../components/Login/Login")),
+  },
+  {
+    pageLink: "/notfound",
+    view: lazy(() => import("./NotFound")),
+  },
+
+
 ];
 
+const privateRoutes = [
+  {
+    pageLink: "/",
+    view: lazy(() => import("../components/Home/Home")),
+  },
+  {
+    pageLink: "/restaurant/:restaurant_id",
+    view: lazy(() => import("../components/Restaurants/SingleRestaurant")),
+  },
+  {
+    pageLink: "/cart",
+    view: lazy(() => import("../components/Cart/Cart")),
+  },
+]
+
 export const publicPages = publicRoutes.map((page, indx) => (
-    <Route exact path={page.pageLink} component={page.view} key={indx} />
+  <Route exact path={page.pageLink} component={page.view} key={indx} />
+));
+
+export const privatePages = privateRoutes.map((page, indx) => (
+  <Route exact path={page.pageLink} component={page.view} key={indx} />
 ));

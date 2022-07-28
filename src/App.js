@@ -4,9 +4,10 @@ import { connect } from "react-redux";
 import Navbar from "./components/Navbar/Navbar";
 
 import "./App.css";
-import { publicPages } from "./helpers/routes";
+import { publicPages , privatePages } from "./helpers/routes";
 import "lightgallery.js/dist/css/lightgallery.css";
 import LoaderFullPage from "./helpers/LoaderFullPage";
+import ForceLogin from "./helpers/ForceLogin";
 import SnackbarComponent from "./components/SnackbarComponent";
 
 const App = (props) => {
@@ -21,7 +22,17 @@ const App = (props) => {
       <Suspense fallback={<div />}>
         <Navbar />
         <Switch>
-          {publicPages}
+            {publicPages}
+            <div>
+              {props.auth.isLoggedIn ? privatePages : <ForceLogin from={location}/>}
+              {/* {!props.auth.isLoggedIn ? <ForceLogin from={location} /> : null} */}
+            </div>
+          {/* {publicPages}
+          {!props.auth.isLoggedIn ? <Redirect
+                    to={{
+                        pathname: "/login",
+                    }}
+                /> : null} */}
           {/* {props.isLoading ? (
             <div>
               {" "}
@@ -51,7 +62,7 @@ const mapStateToProps = (state, ownProps) => {
     snackbarOpen: state.snackbar.snackbarOpen,
     snackbarMsg: state.snackbar.snackbarMsg,
     snackbarVariant: state.snackbar.snackbarVariant,
-    // auth: state.auth,
+    auth: state.auth,
     ...ownProps,
   };
 };
