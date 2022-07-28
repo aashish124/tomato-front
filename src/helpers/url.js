@@ -1,6 +1,6 @@
 // export const ROOT = "http://localhost:3000";
-export const API_ROOT = "http://localhost:9000/api";
-
+export const API_ROOT = "https://tomato-group-3.herokuapp.com";
+// https://tomato-group-3.herokuapp.com/login
 
 export const Apiurls = {
   rootUrl: () => `${API_ROOT}`,
@@ -8,7 +8,7 @@ export const Apiurls = {
 
   // Auth
   createUser: () => `${API_ROOT}/auth/signup`,
-  login: () => `${API_ROOT}/auth/signin`,
+  login: () => `${API_ROOT}/login`,
   verifyUser: () => `${API_ROOT}/auth/verify-user`,
 
 

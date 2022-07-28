@@ -10,7 +10,7 @@ const Login = (props) => {
         password: "",
     });
 
-    console.log('sdad');
+    // console.log('sdad');
 
 
     const handleChange = (e) => {

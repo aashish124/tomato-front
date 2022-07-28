@@ -7,6 +7,7 @@ export const tokenConfig = () => {
     return {
         headers: {
             "Content-Type": "application/json",
+            "Authorization": "Basic Og==",
         },
     };
 };
@@ -20,10 +21,17 @@ export const setIsLoading = (value) => {
 
 export const login = (data) => (dispatch) => {
     const url = Apiurls.login();
+    console.log(data)
+    const dataObject = {
+        'email': data.email,
+        'password': data.password
+    }
+    console.log(dataObject);
     dispatch(setIsLoading(true));
     axios
         .post(url, data, tokenConfig())
         .then((res) => {
+
             // const token = res.data.accessToken;
             // localStorage.setItem('jwtToken', token);
             dispatch({
@@ -33,6 +41,7 @@ export const login = (data) => (dispatch) => {
             dispatch(openSnackbar("Login Successful", "success"));
         })
         .catch((err) => {
+            console.log(err);
             // dispatch(returnError(err.message));
             dispatch(openSnackbar("Invalid username or password", "error"));
         });
