@@ -20,5 +20,5 @@ export const Apiurls = {
 
   // Restaurants
   getAllRestaurants: () => `${API_ROOT}/restaurants`,
-  getSingleRestaurant: (id) => `${API_ROOT}/browseRestaurant`,
+  getSingleRestaurant: () => `${API_ROOT}/browseRestaurant`,
 };

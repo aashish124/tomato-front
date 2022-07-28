@@ -75,7 +75,7 @@ const data1 = {
     "name": "Punjabi Dhaba",
     "offer": 20,
     "description": "Hygeinic Veg Menu Only ",
-    "address": "madiwala,bangalore,karnataka,india",
+    "address": "Madiwala, Bangalore",
     "imageUrl": "https://media-cdn.tripadvisor.com/media/photo-i/0d/6c/4f/b8/photo1jpg.jpg",
 
 }
@@ -83,7 +83,7 @@ const data1 = {
 const data2 = [{
     "itemId": "10001",
     "name": "Paneer Tikka",
-    "description": "this dish is made with Indian spice and paneer ",
+    "description": "This dish is made with Indian spice and paneer ",
     "offer": 20,
     "restaurantId": "432132",
     "imageUrl": "https://media-cdn.tripadvisor.com/media/photo-i/0d/6c/4f/b8/photo1jpg.jpg",
@@ -146,12 +146,16 @@ const Restaurant = (props) => {
 
                     <div className="d-flex flex-row justify-content-around" style={{marginBottom: "20px" , marginTop: "40px", background: "linear-gradient(#ffffff, #9198e5)"}}>
 
-                        <div className="d-flex flex-column justify-content-center align-items-center" >
+                        <div className="d-flex flex-column justify-content-center align-items-center" style={{width: "60%"}} >
                             <Typography gutterBottom variant="h4" component="h2" align="center">
                                 {props.restaurant.name}
                             </Typography>
                             <div className="d-flex justify-content-between">
                                 <span style={{fontSize: "16px"}}>{props.restaurant.description}</span>
+                            </div><br/>
+                            <div className="d-flex flex-column">
+                                <div style={{fontSize: "16px"}}>Address: {props.restaurant.address}</div>
+                                <div>Offer: {props.restaurant.offer}%</div>
                             </div>
                         </div>
 
