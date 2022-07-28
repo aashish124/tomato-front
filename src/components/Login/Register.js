@@ -68,6 +68,10 @@ function Register() {
                                 <input type="password" name="psd" placeholder="Password" className="form-control" value={user.psd} onChange={changeMe} required /></div>
                             <label htmlFor="address" className="form-label m-2 h5">Address</label>
                             <textarea type="text" name="addr" placeholder="Address" className="form-control" value={user.addr} onChange={changeMe} required /></div>
+                            <div>
+                                <input type="checkbox"/>
+                                <span style={{fontWeight:"bold"}}>  Register as Restaurant Manager</span>
+                            </div>
                         <button className="btn btn-primary my-3 h4">Sign Up</button>
                         <div className="h5 text-center" style={msg === '' ? {} : (msg.includes("Success") ? success : fail)}>{msg}</div>
                         <hr />

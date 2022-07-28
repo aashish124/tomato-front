@@ -21,7 +21,7 @@ const App = (props) => {
         <Navbar />
         <Switch>
           {publicPages}
-          {/* {props.isLoading ? (
+          {/*{props.isLoading ? (
             <div>
               {" "}
               <LoaderFullPage />{" "}
