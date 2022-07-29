@@ -28,7 +28,7 @@ export const setIsLoading = (value) => {
 export const getHomeDetails = (userId) => (dispatch) => {
     const url = Apiurls.getHomeDetails();
     //console.log(url);
-    // dispatch(setIsLoading(true));
+    dispatch(setIsLoading(true));
     const data = {
         userId: userId,
     }
@@ -37,15 +37,17 @@ export const getHomeDetails = (userId) => (dispatch) => {
       .post(url, data,  tokenConfig())
       .then((res) => {
         console.log(res);
-        dispatch({
-          type: types.GET_ALL_RESTAURANTS,
-          payload: res.data.restaurantHomeDetails,
-        });
+        
 
         dispatch({
             type: types.LOGIN_SUCCESS,
             payload: res.data.userHomeDetail,
         })
+
+        dispatch({
+          type: types.GET_ALL_RESTAURANTS,
+          payload: res.data.restaurantHomeDetails,
+        });
       })
       .catch((err) => {
         dispatch(returnError(err.message));

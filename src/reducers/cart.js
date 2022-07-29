@@ -20,7 +20,7 @@ const cart = (state = initialState, action) => {
         case types.ADD_CART:
             if(state.numberCart==0){
                 let cart = {
-                    itemId:action.payload.itemId,
+                    id:action.payload.id,
                     quantity:1,
                     name:action.payload.name,
                     imageUrl:action.payload.imageUrl,
@@ -31,14 +31,14 @@ const cart = (state = initialState, action) => {
             else{
                 let check = false;
                 state.Carts.map((item,key)=>{
-                    if(item.itemId==action.payload.itemId){
+                    if(item.id==action.payload.id){
                         state.Carts[key].quantity++;
                         check=true;
                     }
                 });
                 if(!check){
                     let _cart = {
-                        itemId:action.payload.itemId,
+                        id:action.payload.id,
                         quantity:1,
                         name:action.payload.name,
                         imageUrl:action.payload.imageUrl,
@@ -56,14 +56,14 @@ const cart = (state = initialState, action) => {
             state.numberCart++
             let check1 = false;
             state.Carts.map((item,key)=>{
-                if(item.itemId == action.payload.itemId){
+                if(item.id == action.payload.id){
                     state.Carts[key].quantity++;
                     check1=true;
                 }
             });
             if(!check1){
                 let _cart = {
-                    itemId:action.payload.itemId,
+                    id:action.payload.id,
                     quantity:1,
                     name:action.payload.name,
                     imageUrl:action.payload.imageUrl,
@@ -78,12 +78,12 @@ const cart = (state = initialState, action) => {
         case types.DECREASE_QUANTITY:
 
             state.Carts.map((item,key)=>{
-                if(item.itemId == action.payload.itemId){
+                if(item.id == action.payload.id){
                     state.numberCart--;
                     state.Carts[key].quantity--;
                     if(state.Carts[key].quantity == 0){
                         var temp = state.Carts.filter(i=>{
-                            return i.itemId!=action.payload.itemId
+                            return i.id!=action.payload.id
                         })
                         console.log(temp);
                         state.Carts = temp;
@@ -100,7 +100,7 @@ const cart = (state = initialState, action) => {
                 ...state,
                 numberCart:state.numberCart - quantity_,
                 Carts:state.Carts.filter(item=>{
-                    return item.itemId!=state.Carts[action.payload].id
+                    return item.id!=state.Carts[action.payload].id
                 })
                
             }

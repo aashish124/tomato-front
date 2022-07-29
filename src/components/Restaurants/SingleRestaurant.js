@@ -81,7 +81,7 @@ const data1 = {
 }
 
 const data2 = [{
-    "itemId": "10001",
+    "id": "10001",
     "name": "Paneer Tikka",
     "description": "This dish is made with Indian spice and paneer ",
     "offer": 20,
@@ -90,7 +90,7 @@ const data2 = [{
     "price": "200",
     "rating": 4.5
 }, {
-    "itemId": "10032",
+    "id": "10032",
     "name": "Gobi Paratha",
     "description": "this dish is made with wheet and cabbage and contains a lot of oil",
     "offer": 10,
@@ -99,7 +99,7 @@ const data2 = [{
     "price": "50",
     "rating": 4.7
 }, {
-    "itemId": "10035",
+    "id": "10035",
     "name": "Gobi Paratha",
     "description": "this dish is made with wheet and cabbage and contains a lot of oil",
     "offer": 10,
@@ -130,7 +130,7 @@ const Restaurant = (props) => {
 
     const getCartItemQuantity = (item) => {
         // console.log(props.cart.Carts)
-        const q = props.cart.Carts.filter(c => c.itemId === item.itemId);
+        const q = props.cart.Carts.filter(c => c.id === item.id);
         if(q.length > 0){
             return q[0].quantity;
         }

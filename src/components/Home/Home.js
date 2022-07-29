@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import "./Home.css";
 import AllRestaurants from "../Restaurants/AllRestaurants";
 import { getHomeDetails } from "../../actions/home";
+import LoaderFullPage from "../../helpers/LoaderFullPage";
 
 
 
@@ -60,7 +61,9 @@ const Home = (props) => {
   return (
     <div>
 
-      <AllRestaurants restaurantList={props.restaurantList} />
+    {props.restaurantLoading ? <LoaderFullPage/> : <AllRestaurants restaurantList={props.restaurantList} />}
+
+      
 
     </div>
   );
@@ -69,6 +72,7 @@ const Home = (props) => {
 const mapStateToProps = (state, ownProps) => {
   return {
     restaurantList: state.restaurants.restaurantsList,
+    restaurantLoading: state.restaurants.restaurantsLoading,
     // restaurantList: data,
     auth: state.auth,
     ...ownProps,

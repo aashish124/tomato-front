@@ -62,7 +62,7 @@ const data = [
     totalPrice: 200,
     items: [
       {
-        itemId: "10035",
+        id: "10035",
         name: "Paneer Tikka",
         description:
           "this dish is made with wheet and cabbage and contains a lot of oil",
@@ -70,7 +70,7 @@ const data = [
         restaurantId: "432132",
       },
       {
-        itemId: "10032",
+        id: "10032",
         name: "Gobi Paratha",
         description:
           "this dish is made with wheet and cabbage and contains a lot of oil",
@@ -84,7 +84,7 @@ const data = [
     totalPrice: 3000,
     items: [
       {
-        itemId: "10035",
+        id: "10035",
         name: "Gobi Paratha",
         description:
           "this dish is made with wheet and cabbage and contains a lot of oil",
@@ -92,7 +92,7 @@ const data = [
         restaurantId: "432132",
       },
       {
-        itemId: "10032",
+        id: "10032",
         name: "Gobi Paratha",
         description:
           "this dish is made with wheet and cabbage and contains a lot of oil",

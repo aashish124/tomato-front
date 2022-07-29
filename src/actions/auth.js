@@ -59,6 +59,7 @@ export const signup = (formData) => (dispatch) => {
     axios
         .post(url, formData, tokenConfig())
         .then((res) => {
+            console.log(res);
             dispatch({
                 type: types.LOGIN_SUCCESS,
                 payload: res.data

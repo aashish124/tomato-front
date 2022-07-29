@@ -3,7 +3,7 @@ const data = [
     orderId: 1,
     items: [
       {
-        itemId: "10035",
+        id: "10035",
         name: "Gobi Paratha",
         description:
           "this dish is made with wheet and cabbage and contains a lot of oil",
@@ -14,7 +14,7 @@ const data = [
         price: "50",
       },
       {
-        itemId: "10032",
+        id: "10032",
         name: "Gobi Paratha",
         description:
           "this dish is made with wheet and cabbage and contains a lot of oil",
@@ -31,7 +31,7 @@ const data = [
     orderId: 2,
     items: [
       {
-        itemId: "10035",
+        id: "10035",
         name: "Gobi Paratha",
         description:
           "this dish is made with wheet and cabbage and contains a lot of oil",
@@ -42,7 +42,7 @@ const data = [
         price: "50",
       },
       {
-        itemId: "10032",
+        id: "10032",
         name: "Gobi Paratha",
         description:
           "this dish is made with wheet and cabbage and contains a lot of oil",
