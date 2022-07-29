@@ -1,10 +1,10 @@
 import * as types from "../actions/actionTypes";
 const initialState = {
 
-    isLoggedIn: true,
+    isLoggedIn: false,
     name: "",
     userId: null,
-    isLoading: true,
+    isLoading: false,
     
 };
 

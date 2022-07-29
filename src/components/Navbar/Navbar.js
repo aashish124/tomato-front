@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import { NavLink , Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
@@ -49,7 +49,6 @@ const Navbar = (props) => {
               </NavLink>
             </li>
 
-            <Searchbar />
             <li className={`nav-item mx-4`} name="home">
               <Button
                 id="basic-button"
@@ -69,13 +68,10 @@ const Navbar = (props) => {
                   "aria-labelledby": "basic-button",
                 }}
               >
-                <MenuItem onClick={handleClose} style={{ padding: "10px" }}>
-                  Profile
-                </MenuItem>
                 <br />
                 <MenuItem onClick={handleClose} style={{ padding: "10px" }}>
-                    <Link to={`/orders`}>
-                  My Orders</Link>
+                  <Link to={`/orders`}>
+                    My Orders</Link>
                 </MenuItem>
                 <br />
                 <MenuItem onClick={handleClose} style={{ padding: "10px" }}>
@@ -99,6 +95,7 @@ const Navbar = (props) => {
                 {props.totalItems}
               </NavLink>
             </li>
+            <Searchbar />
           </ul>
         </div>
       </nav>

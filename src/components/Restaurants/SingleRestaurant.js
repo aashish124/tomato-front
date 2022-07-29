@@ -116,6 +116,7 @@ const Restaurant = (props) => {
     const history = useHistory();
 
       useEffect(() => {
+        console.log(props.match.params.restaurant_name)
         props.dispatch(getSingleRestaurant(props.match.params.restaurant_name));
       }, []);
 
@@ -144,7 +145,7 @@ const Restaurant = (props) => {
                 <div> <LoaderFullPage /> </div> :
                 <div className="container my-5">
 
-                    <div className="d-flex flex-row justify-content-around" style={{marginBottom: "20px" , marginTop: "40px", background: "linear-gradient(#ffffff, #9198e5)"}}>
+                    <div className="d-flex flex-row justify-content-around" style={{marginBottom: "20px" , paddingTop: "40px", background: "linear-gradient(#ffffff, #9198e5)"}}>
 
                         <div className="d-flex flex-column justify-content-center align-items-center" style={{width: "60%"}} >
                             <Typography gutterBottom variant="h4" component="h2" align="center">
@@ -200,10 +201,10 @@ const Restaurant = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        restaurant: data1,
-        restaurantItems: data2,
-        // restaurant: state.restaurant.singleRestaurant,
-        // restaurantItems: state.restaurant.singleRestaurantItems,
+        // restaurant: data1,
+        // restaurantItems: data2,
+        restaurant: state.restaurants.singleRestaurant,
+        restaurantItems: state.restaurants.singleRestaurantItems,
         cart: state.cart,
         restaurantLoading: state.restaurants.restaurantLoading,
         ...ownProps,

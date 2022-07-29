@@ -52,8 +52,9 @@ const data = [{
 const Home = (props) => {
 
   useEffect(() => {
-
-    props.dispatch(getHomeDetails());
+    if(props.auth.userId != undefined){
+      props.dispatch(getHomeDetails(props.auth.userId));
+    }
   }, []);
 
   return (
@@ -67,8 +68,9 @@ const Home = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    // restaurantList: state.restaurants.restaurantsList,
-    restaurantList: data,
+    restaurantList: state.restaurants.restaurantsList,
+    // restaurantList: data,
+    auth: state.auth,
     ...ownProps,
   };
 };

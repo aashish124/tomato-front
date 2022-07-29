@@ -32,10 +32,11 @@ export const getHomeDetails = (userId) => (dispatch) => {
     const data = {
         userId: userId,
     }
+    console.log(data);
     axios
       .post(url, data,  tokenConfig())
       .then((res) => {
-
+        console.log(res);
         dispatch({
           type: types.GET_ALL_RESTAURANTS,
           payload: res.data.restaurantHomeDetails,

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Navbar from "./components/Navbar/Navbar";
 
 import "./App.css";
-import { publicPages , privatePages } from "./helpers/routes";
+import { publicPages, privatePages } from "./helpers/routes";
 import "lightgallery.js/dist/css/lightgallery.css";
 import LoaderFullPage from "./helpers/LoaderFullPage";
 import ForceLogin from "./helpers/ForceLogin";
@@ -19,26 +19,28 @@ const App = (props) => {
 
   return (
     <div className="all-content">
-      <Suspense fallback={<div />}>
-        {props.auth.isLoggedIn ? <Navbar /> : null}
-        {/* <Navbar /> */}
-        <Switch>
+      {props.auth.isLoading ? <LoaderFullPage /> :
+        <Suspense fallback={<div />}>
+          {props.auth.isLoggedIn ? <Navbar /> : null}
+          {/* <Navbar /> */}
+          <Switch>
             {publicPages}
             <div>
-              {props.auth.isLoggedIn ? privatePages : <ForceLogin from={location}/>}
+              {props.auth.isLoggedIn ? privatePages : <ForceLogin from={location} />}
               {/* {!props.auth.isLoggedIn ? <ForceLogin from={location} /> : null} */}
             </div>
-          
-          <Redirect to="/notfound" />
-        </Switch> 
-        <SnackbarComponent 
-          snackbarOpen={props.snackbarOpen}
-          autoHideDuration={4000}
-          snackbarMsg={props.snackbarMsg}
-          snackbarVariant={props.snackbarVariant}
-        />
 
-      </Suspense>
+            <Redirect to="/notfound" />
+          </Switch>
+          <SnackbarComponent
+            snackbarOpen={props.snackbarOpen}
+            autoHideDuration={4000}
+            snackbarMsg={props.snackbarMsg}
+            snackbarVariant={props.snackbarVariant}
+          />
+
+        </Suspense>}
+
     </div>
   );
 };

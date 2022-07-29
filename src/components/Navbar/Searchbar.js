@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { connect } from "react-redux";
 import { getAllRestaurantsList } from '../../actions/restaurants';
 import { getHomeDetails } from '../../actions/home';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { Autocomplete } from '@mui/material';
 
 
@@ -57,69 +57,57 @@ const Searchbar = (props) => {
     // note: the id field is mandatory
     const [items, setItems] = useState([])
 
+    const [query, setQuery] = useState(null)
+    const [redirect , setRedirect] = useState(false);
+
 
     useEffect(() => {
         props.dispatch(getHomeDetails())
     }, [])
 
-    useEffect(() => {
-        var temp = [];
-        props.restaurantList.map((item, index) => {
-            var tempItem = {
-                id: index,
-                restaurantId: item.restaurantId,
-                name: item.name,
-                imageUrl: item.imageUrl,
-            }
-            temp.push(tempItem);
-        })
-        console.log(temp);
-        setItems(temp);
-    }, [props.restaurantList])
-
-    const handleOnSearch = (string, results) => {
-        // onSearch will have as the first callback parameter
-        // the string searched and for the second the results.
-        console.log(string, results)
+    const handleChange = (e) => {
+        e.preventDefault();
+        setQuery(e.target.value)
+        setRedirect(false);
     }
 
-    const handleOnHover = (result) => {
-        // the item hovered
-        console.log(result)
-    }
-
-    const handleOnSelect = (item) => {
-        // the item selected
-        console.log(item)
-    }
-
-    const handleOnFocus = () => {
-        console.log('Focused')
-    }
-
-    const formatResult = (item) => {
-        return (
-            <Link to={`/restaurant/${item.name}`}>
-                <span style={{ textAlign: 'left' }}><img src={item.imageUrl} style={{ height: '30px' }} /></span>
-                <span style={{ textAlign: 'left', marginLeft: '10px' }}>{item.name}</span>
-            </Link>
-        )
+    const handleSubmit = () => {
+        console.log(query)
+        setRedirect(true);
     }
 
     return (
         <div className="App">
             <header className="App-header">
-                <div style={{ width: 400 }}>
-                    <ReactSearchAutocomplete
-                        items={items}
-                        onSearch={handleOnSearch}
-                        onHover={handleOnHover}
-                        onSelect={handleOnSelect}
-                        onFocus={handleOnFocus}
-                        autoFocus
-                        formatResult={formatResult}
-                    />
-                </div>
+                {redirect ? <Redirect
+                    to={{
+                        pathname: `/restaurant/${query}`,
+                    }}
+                /> : null }
+                <div>
+                <input
+                    style={{ marginRight: "5px" }}
+                    type="text"
+                    placeholder="Name"
+                    name="name"
+                    value={query}
+                    onChange={handleChange}
+                />
+                <i
+                    className="fa fa-search"
+                    style={{ marginRight: "5px" }}
+                    onClick={() => handleSubmit()}
+                ></i>
+                {/* <ReactSearchAutocomplete
+                    items={items}
+                    onSearch={handleOnSearch}
+                    onHover={handleOnHover}
+                    onSelect={handleOnSelect}
+                    onFocus={handleOnFocus}
+                    autoFocus
+                    formatResult={formatResult}
+                /> */}
+            </div>
             </header>
         </div>
     )
